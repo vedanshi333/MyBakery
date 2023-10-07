@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>My Bakery</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .body{
+            display: flex;
+        }
+        .cartmenu{
+            display: flex;
+            position: sticky;
+            top: 0;
+            z-index: 5;
+        }
+        .container1 {
+            width: 100%;
+            background-color: #ff5757;          
+            z-index: 2;
+        }
+
+        .flex1 {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .flex2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .flex3 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .flex4 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .container1 h1 {
+            color: #fff;
+            font-size: 40px;
+        }
+
+        .menu li {
+            list-style: none;
+            display: inline;
+            margin-right: 30px;
+        }
+
+        .menu li:last-child {
+            margin-right: 0;
+        }
+        .menu li i{
+            font-size: 30px;
+            color: #fff;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .menu a:hover {
+            color: #000;
+        }
+        .cart {
+            z-index: 10;
+            position: absolute;
+            background-color: rgb(255, 238, 216);
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 300px;
+            height: 100vh;
+            display: none;
+            color: #000;
+            
+        }
+
+        .cross {
+            position: absolute;
+            right: 10px;
+            top: 20px;
+            border: none;
+            background-color: transparent;
+            color: #000;
+            font-weight: bold;
+        }
+        .cart ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-top: -10px;
+}
+.cart h2{
+    margin-left: 35px;
+}
+.cart ul li i {
+    cursor: pointer;
+}
+.cart img{
+    width: 80px;
+}
+.product{
+    display: flex;
+    font-size: 20px;
+}
+.product span{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.quantity{
+    width: 35px;
+    height: 15px;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+.total{
+    border-top: 2px solid black;
+    text-align: right;
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 10px;
+}
+        .container2 {
+            background-image: url(cheesecake.jpg);
+            height: 100%;
+            width: 100%;
+            background-size: 100% 100%;
+            margin: 0;
+            color: #fff;
+            padding: 30px auto;
+            background-size: cover;
+            position: relative;
+            z-index: -1;
+            padding-bottom: 150px;
+        }
+
+        .container2::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(20, 20, 30, 0.5), rgba(44, 44, 49, 0.2));
+            background-size: 100% 100%;
+            z-index: -1;
+
+        }
+
+        .cheesecake {
+            padding-left: 30px;
+        }
+
+        .container2 h1 {
+            margin-top: 150px;
+            font-size: 60px;
+        }
+
+        .container2 h2 {
+            font-size: 50px;
+            margin-top: 3rem;
+        }
+
+        .container2 h3 {
+            font-size: 45px;
+        }
+
+        .pink {
+            color: rgb(255, 20, 98);
+        }
+
+        .button1 {
+            color: white;
+            background-color: rgb(255, 20, 98);
+            border: none;
+            border-radius: 15px;
+            font-size: 20px;
+            padding: 15px;
+        }
+
+        .container3 {
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        .container3 h1 {
+            text-align: center;
+            font-size: 40px;
+        }
+
+        .card-container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+
+        .card:hover {
+            background-color: bisque;
+        }
+
+        .card img {
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            width: 300px;
+            height: 300px;
+        }
+
+        .card h2 {
+            font-size: 30px;
+        }
+
+        #hid {
+            display: none;
+            margin-top: 30px;
+        }
+
+        #hid2 {
+            display: none;
+        }
+
+        .button2 {
+            padding: 5px 6px;
+            background-color: #fff;
+            border: 1px solid black;
+            color: rgb(255, 20, 98);
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .button3 {
+            color: white;
+            background-color: rgb(255, 20, 98);
+            border: none;
+            border-radius: 15px;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        .container4 {
+            width: 100%;
+            background-color: bisque;
+            margin-top: 50px;
+            padding-bottom: 30px;
+        }
+
+        .container4 h1 {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 50px;
+        }
+
+        .card2 {
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: 2px solid black;
+            border-radius: 20px;
+            text-align: center;
+            padding-bottom: 30px;
+        }
+
+        .card2 img {
+            width: 500px;
+            height: 450px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .card2 h2 {
+            font-size: 27px;
+        }
+
+        .modal1 {
+            position: absolute;
+            margin-top: 0;
+            width: 400px;
+            height: 400px;
+            display: none;
+            background-color: white;
+            padding: 75px 20px 20px 20px;
+            border-radius: 5px;
+            border: 3px solid black;
+            font-size: 20px;
+            text-align: left;
+        }
+
+        .modal2 {
+            position: absolute;
+            margin-top: 0;
+            width: 400px;
+            height: 400px;
+            display: none;
+            background-color: white;
+            padding: 75px 20px 20px 20px;
+            padding: 20px;
+            border-radius: 5px;
+            border: 3px solid black;
+            font-size: 20px;
+            text-align: left;
+        }
+
+        .modal1 h2,
+        .modal2 h2 {
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .modal1 li,
+        .modal2 li {
+            font-size: 180x;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-container {
+            width: 100%;
+            padding-bottom: 30px;
+            background-color: #fd2b2b;
+            color: #fff;
+        }
+
+        .aboutus {
+            width: 200px;
+        }
+
+        .footer-container li {
+            margin: 0;
+            list-style: none;
+            padding-top: 10px;
+            font-size: 110%;
+        }
+
+        .contactus li {
+            word-spacing: 1.5rem;
+        }
+
+        @media (max-width:1023px) {
+            .flex2 {
+                flex-direction: column;
+            }
+
+            .card-container {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                margin-top: 20px;
+            }
+
+            #hid {
+                margin-top: 0px;
+            }
+            .card2{
+                margin-top: 20px;
+            }
+
+            @media (max-width:533px) {
+                body {
+                    width: fit-content;
+                    block-size: fit-content;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+  
+  <div class="cartmenu">
+    <div class="container1">
+        <div class="flex1 flex2">
+            <h1>MyBakery <i class="fa fa-birthday-cake"></i></h1>
+            <div class="menu">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#menu">MENU</a></li>
+                    <li><a href="#recipe">RECIPES</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                    <li><i class="fa fa-cart-arrow-down"  onclick="showCart()"></i></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+   
+        <div class="cart" id="cart">
+        <button class="cross" onclick="hideCart()">&#9587</button>
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <div class="total" id="total">Total: $0.00</div>
+    </div>
+    </div>
+    </div>
+    <div class="container2">
+        <div class="flex1 flex3">
+            <div class="cheesecake">
+                <h1>Welcome to my bakery</h1>
+
+                <h2>Order Your Favourite <span class="pink">Cheesecake</span></h2>
+                <h3>Buy <span class="pink">Two</span> Get <span class="pink">One</span> Free!!! </h3>
+                <button class="button1">Buy Cheesecake</button>
+            </div>
+        </div>
+    </div>
+    <div id="menu"></div>
+    <div class="container3">
+        <h1>Also Order</h1>
+        <div class="flex1 flex2">
+            <div class="card-container">
+                <div class="card">
+                    <img src="cake.png">
+                    <h2>Order a Cake</h2>
+                    <button class="button2" onclick="addToCart('Cake', 3, 'cake.png')">$3</button>
+                </div>
+                <div class="card">
+                    <img src="Donut.jpg">
+                    <h2>Order a Donut</h2>
+                    <button class="button2" onclick="addToCart('Donut', 5, 'Donut.jpg')">$5</button>
+                </div>
+                <div class="card">
+                    <img src="Cupcake.jpg">
+                    <h2>Order a Cupcake</h2>
+                    <button class="button2" onclick="addToCart('Cupcake',2, 'Cupcake.jpg')">$2</button>
+                </div>
+            </div>
+        </div>
+        <div id="hid">
+            <div class="flex1 flex2">
+                <div class="card-container">
+                    <div class="card">
+                        <img src="bread1.png">
+                        <h2>Order a Bread</h2>
+                        <button class="button2" onclick="addToCart('Bread', 3, 'bread1.png')">$3</button>
+
+                        
+                    </div>
+                    <div class="card">
+                        <img src="cheesecake1.png">
+                        <h2>Order a cheesecake</h2>
+                        <button class="button2" onclick="addToCart('Cheesecake',2, 'cheesecake1.png')">$3</button>
+                    </div>
+                    <div class="card">
+                        <img src="crossiant.png">
+                        <h2>Order a Crossiant</h2>
+                        <button class="button2" onclick="addToCart('Crossiant',2, 'crossiant.png')">$2</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container3">
+        <div class="flex1 flex4">
+            <button class="button1" id="show">Click to see whole Menu</button>
+            <button class="button1" id="hid2">Show Less</button>
+        </div>
+    </div>
+    <div class="container4" id="recipe">
+        <h1>Recipes</h1>
+        <div class="flex1 flex2">
+            <div class="card-container">
+                <div class="card2">
+                    <img src="vanilla cake.jpg">
+                    <h2>Bake your own vanilla cake at home, to learn the recipe click on the botton below</h2>
+                    <button class="button3" id="description1">Click to read the recipe</button>
+                    <div class="modal1" id="modal1">
+                        <h2>Cake Recipe</h2>
+                        <ul>
+                            <li>All-purpose flour</li>
+                            <li>Granulates Sugar</li>
+                            <li>Baking Powder</li>
+                            <li>Salted Butter</li>
+                            <li>Eggs</li>
+                            <li>Vanilla Extract</li>
+                            <li>Milk</li>
+                        </ul>
+                        <div class="buttons">
+                            <button id="close1" class="button3">Close</button>
+                            <button class="button3">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card2">
+                    <img src="Bread.png">
+                    <h2>Bake your own bread at home, to learn the recipe click on the botton below</h2>
+                    <button class="button3" id="description2">Click to read the recipe</button>
+                    <div class="modal2" id="modal2">
+                        <h2>Bread Recipe</h2>
+                        <ul>
+                            <li>All-purpose flour</li>
+                            <li>Yeast</li>
+                            <li>Salt</li>
+                            <li>Butter</li>
+                            <li>Eggs(Optional)</li>
+                            <li>Vegetavbble Oil</li>
+                            <li>Milk</li>
+                        </ul>
+                        <div class="buttons">
+                            <button id="close2" class="button3">Close</button>
+                            <button class="button3">Watch Video></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="footer-container">
+        <div class="flex1 flex2">
+            <div class="aboutus">
+                <h2>About Us</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet officia officiis eaque magnam illo
+                    architecto facere repudiandae. Maiores, ut aperiam.</p>
+            </div>
+            <div>
+                <ul>
+                    <h2>Servies</h2>
+                    <li>Selling bakery items</li>
+                    <li>Baking Classes</li>
+                    <li>Selling items used for baking</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="contactus">
+                    <h2>Contact Us On</h2>
+                    <li><i class="fa fa-phone"></i> Phone</li>
+                    <li><i class="fa fa-envelope"></i> Mail</li>
+                    <li><i class="fa fa-whatsapp"></i> Whatsapp</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="contactus">
+                    <h2>Follow Us On</h2>
+                    <li><i class="fa fa-youtube"></i> Youtube</li>
+                    <li><i class="fa fa-instagram"></i> Instagram</li>
+                    <li><i class="fa fa-twitter"></i> Twitter</li>
+                </ul>
+            </div>
+        </div>
+    
+    
+    <script>
+         var cartItems = []; // To store added items in the cart
+        var cartList = document.getElementById("cart-items");
+
+        function showCart() {
+    var cart = document.getElementById("cart");
+    cart.style.display = "block";
+    updateCartItems();
+}
+
+function hideCart() {
+    var cart = document.getElementById("cart");
+    cart.style.display = "none";
+}
+        const show = document.getElementById("show");
+        const hid = document.getElementById("hid");
+        const hid2 = document.getElementById("hid2");
+
+
+        show.addEventListener("click", () => {
+            show.style.display = "none";
+            hid.style.display = "block";
+            hid2.style.display = "block";
+        });
+
+        hid2.addEventListener("click", () => {
+            show.style.display = "block";
+            hid.style.display = "none";
+            hid2.style.display = "none";
+        });
+      const description1 = document.getElementById('description1');
+        const description2 = document.getElementById('description2');
+        const modal1 = document.getElementById('modal1');
+        const modal2 = document.getElementById('modal2');
+        const close1 = document.getElementById('close1');
+        const close2 = document.getElementById('close2');
+        description1.addEventListener('click', () => {
+            modal1.style.display = 'block';
+        });
+
+        close1.addEventListener('click', () => {
+            modal1.style.display = 'none';
+        });
+        description2.addEventListener('click', () => {
+            modal2.style.display = 'block';
+        });
+
+        close2.addEventListener('click', () => {
+            modal2.style.display = 'none';
+        });
+        function addToCart(itemName, itemPrice, itemImage) {
+            var existingItem = cartItems.find(item => item.name === itemName);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cartItems.push({ name: itemName, price: itemPrice, image: itemImage, quantity: 1 });
+            }
+
+            updateCartItems();
+        }
+
+        function removeCartItem(index) {
+            cartItems.splice(index, 1);
+            updateCartItems();
+        }
+
+        function updateQuantity(index, newQuantity) {
+            cartItems[index].quantity = parseInt(newQuantity);
+            updateCartItems();
+        }
+
+        function updateCartItems() {
+            cartList.innerHTML = "";
+            var total = 0;
+
+            cartItems.forEach(function (item, i) {
+                total += item.price * item.quantity;
+                var li = document.createElement("li");
+                li.innerHTML = `
+                    <div class="product">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image"><br>
+                        <span class="product">${item.name}<br> $${item.price.toFixed(2)}</span>
+                        <input type="number" class="quantity" value="${item.quantity}" min="1" onchange="updateQuantity(${i}, this.value)">
+                    </div>
+                    <i class="fa fa-trash" onclick="removeCartItem(${i})"></i>`;
+                cartList.appendChild(li);
+            });
+
+            if (cartItems.length === 0) {
+                cartList.innerHTML = "<li><h3>Your cart is empty.</h3></li>";
+            }
+
+            var totalElement = document.getElementById("total");
+            totalElement.innerHTML = `Total: $${total.toFixed(2)}`;
+        }
+    </script>
+</body>
+
+</html>
